@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Game } from '../game';
+import { ServerService } from '../server.service';
 
 @Component({
   selector: 'app-game-page',
@@ -9,9 +10,9 @@ import { Game } from '../game';
 })
 export class GamePageComponent implements OnInit {
   public game: Game;
-  public gameName: {isValid, name};
+  public gameName: { isValid, name };
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private sv: ServerService) {
     this.gameName = {
       isValid: false,
       name: ""
@@ -32,5 +33,9 @@ export class GamePageComponent implements OnInit {
 
   isEmptyBoard(): boolean {
     return !(this.game.gameFields.includes("X"));
+  }
+
+  saveGame(): void {
+    this.sv.saveBoard(this.gameName.name, this.game.gameFields);
   }
 }

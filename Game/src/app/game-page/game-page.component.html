@@ -1,18 +1,18 @@
 <ng-template #content let-modal>
   <div class="modal-background">
-  <div class="modal">
-    <div class="modal-head">
-      <h4 class="modal-title">Játék mentése</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <div class="modal">
+      <div class="modal-head">
+        <h4 class="modal-title">Játék mentése</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="game-name-error" *ngIf="!gameName.isValid && gameName.name">Az elnevezés nem lehet hosszabb 50 karakternél, és nem tartalmazhat szóközt!</p>
+        <input class="game-name" type="text" [(ngModel)]="gameName.name" placeholder="Játék elnevzése" maxlength="50" required (keyup)="validateGameName()" />
+        <button type="button" class="modal-save-game" [disabled]="!gameName.isValid" (click)="saveGame()">Ok</button>
+      </div>
     </div>
-    <div class="modal-body">
-      <p class="game-name-error" *ngIf="!gameName.isValid && gameName.name">Az elnevezés nem lehet hosszabb 50 karakternél, és nem tartalmazhat szóközt!</p>
-      <input class="game-name" type="text" [(ngModel)]="gameName.name" placeholder="Játék elnevzése" maxlength="50" required (keyup)="validateGameName()"/>
-      <button type="button" class="modal-save-game" [disabled]="!gameName.isValid" (click)="2+2">Ok</button>
-    </div>
-  </div>
   </div>
 </ng-template>
 
@@ -22,10 +22,10 @@
             *ngFor="let field of game.gameFields let index = index"
             [disabled]="field || game.checkIsEndGame()"
             (click)="game.playerPutsOn(index)">
-        {{field}}
+      {{field}}
     </button>
   </div>
   <nav class="nav-bar">
-    <button class="save-game" [disabled]="isEmptyBoard()" (click)="open(content)" title ="Üres táblát nem lehet menteni">Mentés</button>
+    <button class="save-game" [disabled]="isEmptyBoard()" (click)="open(content)" title="Üres táblát nem lehet menteni">Mentés</button>
   </nav>
 </div>
