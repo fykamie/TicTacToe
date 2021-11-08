@@ -1,3 +1,46 @@
+.modal {
+    background-color: honeydew;
+    border: 1px solid black;
+    width: 210px;
+    padding: 10px;
+    margin: auto;
+    position:relative;
+}
+
+.close {
+    position:absolute;
+    top: 0;
+    right: 0;
+}
+
+.game-name-error {
+    color: red;
+}
+
+.modal-save-game {
+  margin-left: 5px;
+}
+
+.modal-title {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+nav {
+    display:flex;
+    justify-content:space-around;
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+nav > button {
+  padding: 10px;
+  background-color: dodgerblue;
+  color: white;
+  border: 1px solid blue; 
+}
+
 .game-fields {
     width: 150px;
     display: flex;
@@ -13,8 +56,4 @@
     color: black;
     font-size: 18px;
     font-weight: bold;
-}
-
-.field:disabled {
-    cursor: default;
 }
