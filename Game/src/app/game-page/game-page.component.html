@@ -1,5 +1,10 @@
 <div class="game-page">
   <div class="game-fields">
-    <button class="field" *ngFor="let field of gameFields" [disabled]="field">{{field}}</button>
+    <button class="field"
+            *ngFor="let field of game.gameFields let index = index"
+            [disabled]="field || game.checkIsEndGame()"
+            (click)="game.playerPutsOn(index)">
+        {{field}}
+    </button>
   </div>
 </div>
